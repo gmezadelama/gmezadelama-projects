@@ -14,16 +14,29 @@ import type { Project } from "@/content/projects";
 export function ProjectCard({ project }: { project: Project }) {
   return (
     <Card className="overflow-hidden py-0">
-      <Image
-        src={project.coverImage}
-        alt={`${project.title} — project preview`}
-        width={1200}
-        height={675}
-        className="aspect-video w-full object-cover"
-        priority
-      />
+      <Link
+        href={`/projects/${project.slug}`}
+        aria-label={`View case study: ${project.title}`}
+        className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      >
+        <Image
+          src={project.coverImage}
+          alt={`${project.title} — project preview`}
+          width={1200}
+          height={675}
+          className="aspect-video w-full object-cover"
+          priority
+        />
+      </Link>
       <CardHeader className="pt-6">
-        <CardTitle className="text-xl">{project.title}</CardTitle>
+        <CardTitle className="text-xl">
+          <Link
+            href={`/projects/${project.slug}`}
+            className="rounded-sm text-foreground underline-offset-4 transition-colors hover:text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          >
+            {project.title}
+          </Link>
+        </CardTitle>
         <CardDescription>{project.summary}</CardDescription>
       </CardHeader>
       <CardContent className="flex flex-col gap-4 pb-6">
@@ -43,7 +56,7 @@ export function ProjectCard({ project }: { project: Project }) {
             </a>
           </Button>
           {project.links.repo ? (
-            <Button asChild variant="ghost">
+            <Button asChild variant="outline">
               <a
                 href={project.links.repo}
                 target="_blank"
