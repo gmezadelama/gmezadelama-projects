@@ -39,6 +39,31 @@ export async function generateMetadata({
   };
 }
 
+function ProjectLinkButtons({
+  demo,
+  repo,
+}: {
+  demo: string;
+  repo?: string;
+}) {
+  return (
+    <div className="flex flex-wrap gap-3 pt-2">
+      <Button asChild>
+        <a href={demo} target="_blank" rel="noopener noreferrer">
+          Live demo
+        </a>
+      </Button>
+      {repo ? (
+        <Button asChild variant="outline">
+          <a href={repo} target="_blank" rel="noopener noreferrer">
+            Repository
+          </a>
+        </Button>
+      ) : null}
+    </div>
+  );
+}
+
 export default async function ProjectPage({
   params,
 }: PageProps<"/projects/[slug]">) {
@@ -67,44 +92,43 @@ export default async function ProjectPage({
           {project.summary}
         </p>
         <TechBadges tech={project.tech} />
-        <div className="flex flex-wrap gap-3 pt-2">
-          <Button asChild>
-            <a
-              href={project.links.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Live demo
-            </a>
-          </Button>
-          {project.links.repo ? (
-            <Button asChild variant="outline">
-              <a
-                href={project.links.repo}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Repository
-              </a>
-            </Button>
-          ) : null}
-        </div>
+        <ProjectLinkButtons
+          demo={project.links.demo}
+          repo={project.links.repo}
+        />
       </div>
 
-      <Image
-        src={project.coverImage}
-        alt={`${project.title} — project preview`}
-        width={1200}
-        height={675}
-        className="w-full rounded-xl object-cover"
-        priority
-      />
+      {project.demoMedia ? (
+        <Image
+          src={project.demoMedia.src}
+          alt={project.demoMedia.alt}
+          width={1512}
+          height={928}
+          className="w-full rounded-xl object-cover"
+          unoptimized
+          priority
+        />
+      ) : (
+        <Image
+          src={project.coverImage}
+          alt={`${project.title} — project preview`}
+          width={1200}
+          height={675}
+          className="w-full rounded-xl object-cover"
+          priority
+        />
+      )}
 
       <div className="flex flex-col gap-10">
         {project.caseStudy.map((section) => (
           <CaseStudySection key={section.heading} section={section} />
         ))}
       </div>
+
+      <ProjectLinkButtons
+        demo={project.links.demo}
+        repo={project.links.repo}
+      />
     </article>
   );
 }
