@@ -43,16 +43,22 @@ function ProjectLinkButtons({
   demo,
   repo,
 }: {
-  demo: string;
+  demo?: string;
   repo?: string;
 }) {
+  if (!demo && !repo) {
+    return null;
+  }
+
   return (
     <div className="flex flex-wrap gap-3 pt-2">
-      <Button asChild>
-        <a href={demo} target="_blank" rel="noopener noreferrer">
-          Live demo
-        </a>
-      </Button>
+      {demo ? (
+        <Button asChild>
+          <a href={demo} target="_blank" rel="noopener noreferrer">
+            Live demo
+          </a>
+        </Button>
+      ) : null}
       {repo ? (
         <Button asChild variant="outline">
           <a href={repo} target="_blank" rel="noopener noreferrer">

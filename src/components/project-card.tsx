@@ -46,15 +46,17 @@ export function ProjectCard({ project }: { project: Project }) {
           <Button asChild>
             <Link href={`/projects/${project.slug}`}>View case study</Link>
           </Button>
-          <Button asChild variant="outline">
-            <a
-              href={project.links.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Live demo
-            </a>
-          </Button>
+          {project.links.demo ? (
+            <Button asChild variant="outline">
+              <a
+                href={project.links.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Live demo
+              </a>
+            </Button>
+          ) : null}
           {project.links.repo ? (
             <Button asChild variant="outline">
               <a

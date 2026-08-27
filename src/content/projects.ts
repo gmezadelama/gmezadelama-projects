@@ -1,5 +1,5 @@
 export type ProjectLinks = {
-  demo: string;
+  demo?: string;
   repo?: string;
 };
 
@@ -33,7 +33,25 @@ export type Project = {
   caseStudy: CaseStudySection[];
 };
 
+// Listed most recent first — add new projects at the top of this array.
 export const projects: Project[] = [
+  {
+    // PLACEHOLDER: structural entry only. Copy, tech stack, links, and
+    // media will be filled in by a follow-up task.
+    slug: "mood-tracker-ai",
+    title: "Mood Tracker AI",
+    summary: "AI-enhanced mood tracking application. Portfolio content coming next.",
+    purpose: "Full purpose statement to be added.",
+    tech: [],
+    coverImage: "/images/projects/mood-tracker-ai/placeholder.png",
+    links: {},
+    caseStudy: [
+      {
+        heading: "Overview",
+        body: "AI-enhanced mood tracking application. Portfolio content coming next.",
+      },
+    ],
+  },
   {
     slug: "web-dictionary-ai",
     title: "Web Dictionary AI",
@@ -56,9 +74,9 @@ export const projects: Project[] = [
       "React Testing Library",
       "Playwright",
     ],
-    coverImage: "/images/projects/web-dictionary-ai-ai-features.png",
+    coverImage: "/images/projects/web-dictionary-ai/ai-features.png",
     demoMedia: {
-      src: "/images/projects/web-dictionary-ai-demo.gif",
+      src: "/images/projects/web-dictionary-ai/demo.gif",
       alt: "Walkthrough of searching a word and viewing AI-generated explanations and examples in Web Dictionary AI",
     },
     links: {
@@ -106,7 +124,7 @@ export const projects: Project[] = [
         heading: "Dictionary experience",
         body: "Public access to definitions, phonetics, pronunciations, synonyms, and multiple meanings.",
         image: {
-          src: "/images/projects/web-dictionary-ai-dictionary-view.png",
+          src: "/images/projects/web-dictionary-ai/dictionary-view.png",
           alt: "Dictionary search results showing a definition, phonetics, and pronunciation audio controls",
         },
       },
@@ -114,7 +132,7 @@ export const projects: Project[] = [
         heading: "Guest experience",
         body: "The application remains fully usable without authentication while clearly exposing the additional AI functionality.",
         image: {
-          src: "/images/projects/web-dictionary-ai-guest-experience.png",
+          src: "/images/projects/web-dictionary-ai/guest-experience.png",
           alt: "Guest view of Web Dictionary AI with dictionary search available and the Learn features shown locked behind sign-in",
         },
       },
@@ -122,7 +140,7 @@ export const projects: Project[] = [
         heading: "AI features",
         body: "The Learn section provides additional explanations and examples while enforcing authentication and daily usage limits.",
         image: {
-          src: "/images/projects/web-dictionary-ai-ai-features.png",
+          src: "/images/projects/web-dictionary-ai/ai-features.png",
           alt: "Learn panel showing an AI-generated explanation and example sentences for a dictionary entry",
         },
       },
