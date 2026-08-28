@@ -24,6 +24,7 @@ export function ProjectCard({ project }: { project: Project }) {
           alt={`${project.title} — project preview`}
           width={1200}
           height={675}
+          sizes="(min-width: 1024px) 632px, calc(100vw - 48px)"
           className="aspect-video w-full object-cover"
           priority
         />

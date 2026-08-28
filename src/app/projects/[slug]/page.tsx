@@ -108,8 +108,8 @@ export default async function ProjectPage({
         <Image
           src={project.demoMedia.src}
           alt={project.demoMedia.alt}
-          width={1512}
-          height={928}
+          width={project.demoMedia.width}
+          height={project.demoMedia.height}
           className="w-full rounded-xl object-cover"
           unoptimized
           priority
@@ -120,6 +120,7 @@ export default async function ProjectPage({
           alt={`${project.title} — project preview`}
           width={1200}
           height={675}
+          sizes="(min-width: 1024px) 632px, calc(100vw - 48px)"
           className="w-full rounded-xl object-cover"
           priority
         />

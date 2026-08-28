@@ -66,8 +66,9 @@ export function CaseStudySection({
         <Image
           src={section.image.src}
           alt={section.image.alt}
-          width={1000}
-          height={750}
+          width={section.image.width}
+          height={section.image.height}
+          sizes="(min-width: 1024px) 632px, (min-width: 720px) 672px, calc(100vw - 48px)"
           className="w-full max-w-2xl rounded-xl object-contain ring-1 ring-foreground/10"
         />
       ) : null}
