@@ -67,8 +67,10 @@ export const projects: Project[] = [
       width: 3840,
       height: 1746,
     },
-    // Live demo and repository URLs are not yet available — see report.
-    links: {},
+    links: {
+      demo: "https://mood-tracker-ai-ten.vercel.app/",
+      repo: "https://github.com/gmezadelama/mood-tracker-ai",
+    },
     caseStudy: [
       {
         heading: "Overview",
